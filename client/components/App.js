@@ -25,7 +25,7 @@ class App extends Component {
   updateMessages() {
       const currentChat = this.state.friendsList[0];
       socket.onmessage = (event) =>{
-        const newMessages = JSON.parse(event.data);
+        let newMessages = JSON.parse(event.data);
         if (Array.isArray(newMessages)) newMessages.reverse();
         const oldMessages = this.state.messages.slice();
         newMessages = oldMessages.concat(newMessages);
