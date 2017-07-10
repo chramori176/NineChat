@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname +'./../'));
 app.get('/build/bundle.js', express.static(__dirname +'./../build/bundle.js'));
 app.get('/69.jpg', express.static(__dirname +'./../client/69.jpg'));
-port = process.env.PORT || 3000
+port = process.env.PORT || 3001
 app.get('/', (req, res, next)=>{
 console.log()
 console.log('cookies from GET req', req.cookies)
@@ -39,6 +39,7 @@ app.post('/cookie', (req, res, next)=>{
 app.post('/users', chatCtrl.addUser);
 
 const server = http.createServer(app);
+console.log('server is', server);
 const wss = new WebSocket.Server({ server: server, clientTracking: true });
 let connectList = {}
 let chatList = {}
@@ -81,6 +82,6 @@ wss.on('connection', function connection(ws, req) {
 });
 
 // app.listen(port)
-server.listen(3000)
+server.listen(3001)
 
 console.log('server port: ', port)
