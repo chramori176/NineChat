@@ -64,15 +64,7 @@ class App extends Component {
   }
 
   handleKeyPress(event) {
-    if (event.key === 'Enter'){
-          let aMessage = {
-            src: this.state.me.username,
-            dst: this.state.currentChat.username,
-            content: this.state.text,
-          }
-          socket.send(JSON.stringify(aMessage));
-          this.setState({text: ''});
-    }
+    if (event.key === 'Enter') this.sendClick(event);
   }
 
   userClick(user) {
