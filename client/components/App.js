@@ -25,13 +25,13 @@ class App extends Component {
   updateMessages() {
       const currentChat = this.state.friendsList[0];
       socket.onmessage = (event) =>{
-        let newMessages = JSON.parse(event.data);
-        if (Array.isArray(newMessages)) newMessages.reverse();
+        let messages = JSON.parse(event.data);
+        if (Array.isArray(messages)) messages.reverse();
         const oldMessages = this.state.messages.slice();
-        newMessages = oldMessages.concat(newMessages);
+        messages = oldMessages.concat(messages);
         document.cookie = "username=" + this.state.me.username;
         document.cookie = "chatBro=" + currentChat.username;
-        this.setState({ currentChat, newMessages });
+        this.setState({ currentChat, messages });
       }
   }
 
