@@ -13,30 +13,25 @@ class App extends Component {
     super(props);
     this.state = this.getInitialState()
   }
+
   componentDidMount(){
     // before executing the set state below, componentDidMount needs to reach out to
     // server via our websocket and pull down the list of messages between user and user[0].
-
-    console.log('did mount');
     return socket.onopen = (event) =>{
       return this.updateMessages();
     }
   }
 
   updateMessages() {
-      const currchat = this.state.friendsList[0];
+      const currentChat = this.state.friendsList[0];
       socket.onmessage = (event) =>{
-        console.log(event);
-        let msgs = JSON.parse(event.data);
-        msgs = Array.isArray(msgs) ? msgs.reverse() : msgs;
-        const oldmsgs = this.state.messages.slice();
-        msgs = oldmsgs.concat(msgs);
+        let messages = JSON.parse(event.data);
+        messages = Array.isArray(messages) ? messages.reverse() : messages;
+        const oldMessages = this.state.messages.slice();
+        messages = oldMessages.concat(messages);
         document.cookie = "username=" + this.state.me.username;
-        document.cookie = "chatBro=" + currchat.username;
-        this.setState({
-          currentChat: currchat,
-          messages: msgs
-        });
+        document.cookie = "chatBro=" + currentChat.username;
+        this.setState({ currentChat, messages });
       }
   }
 
