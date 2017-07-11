@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react'
 
-
 const UserProfile = (props) => {
     return (
         <div id="user-profile">
@@ -12,7 +11,5 @@ const UserProfile = (props) => {
         </div>
     );
 }
-
-
 
 export default UserProfile;
