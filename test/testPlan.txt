@@ -1,0 +1,41 @@
+Tests
+
+- Unit
+  //- handleKeyPress fires on 'Enter' presses
+  - onclick (not sure how to test this yet)
+  - value is erased on pressing enter or mouse click
+
+- React/Frontend
+  - FriendList
+    //- State initially has some friends in friendslist
+    - Friendlist component matches friend state
+
+  - Me
+    - Initial state has a me with username, name, and photo
+    - The user pofile component matches what is in the me state
+
+  - Messages
+    - Number of Msgcontainer elements matches the length of props.messages
+
+- Websocket connectivity
+ - user recieves a list of last 10 messages upon logging in
+ - user sends a message to other uses on 'message' event
+   - list gets longer and user can see their message
+ - connectlist is updated when a user logs out
+
+
+- Server Routing
+  - GET '/' redirects to messages
+  - GET '/users' gives us all users
+  - GET '/build/bundle.js' serves the js file
+  - GET '/client/styles.css' serves the css file
+  - GET or POST to an invalid route provides proper error code
+  - GET '/messages' returns back a message object
+  - POST '/users' adds a user to the database
+
+
+- Database
+  - addUser adds a user to the user database
+  - addMsg adds a message to the message databasae
+  - getUser returns back the proper user or undefined if the user is not in the db
+  - getMsg returns back all messages
