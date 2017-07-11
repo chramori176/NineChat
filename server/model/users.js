@@ -17,5 +17,5 @@ let usersSchema = mongoose.Schema({
     fList: [{username: String}]
 });
 
-users = mongoose.model('Users', usersSchema)
+let users = mongoose.model('Users', usersSchema)
 module.exports = users

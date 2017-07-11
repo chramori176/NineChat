@@ -12,5 +12,5 @@ let messagesSchema = mongoose.Schema({
     timestamp: { type: Date, default: Date.now }
 });
 
-messages = mongoose.model('Messages', messagesSchema)
+let messages = mongoose.model('Messages', messagesSchema)
 module.exports = messages 

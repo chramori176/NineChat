@@ -2,26 +2,11 @@ const Message = require('../model/message');
 // const messageSchema = require('../model/message');
 const User = require('../model/users');
 const bodyParser = require('body-parser')
+let msgDoc; 
+let msg; 
 
 const chatCtrl = {
-  addUser(req, res, next){
-    console.log('body: ', req.body)
-    let username = req.body.username ? req.body.username : "Chris"
-    let user = new User({
-      username: username,
-      // convs: [{conv_id: Number}],
-      // fList: [{username: String}]
-    })
-    user.save((err, savedUser)=>{
-      if(err){
-        console.error(err)
-        res.json(err)
-      } else {
-        res.json(savedUser)
-      }
-      next()
-    })
-  },
+
   addMsg(data, callback) {
     try {
       msg = JSON.parse(data)
@@ -40,24 +25,11 @@ const chatCtrl = {
         dst: "message_not_json",
         message: data
       })
-      console.log(err)
+      console.log('error ', err)
     }
     msgDoc.save((err, savedMsg)=>{
       if (err) return console.error(err)
-      console.log('doc saved:', savedMsg)
       callback(err, savedMsg)
-    })
-  },
-  getUser(req, res, next){
-    User.find({}, (err, result)=>{
-      if (err){
-        res.json(err)
-        console.log(err)
-        next()
-      } else {
-        res.json(result)
-        next()
-      }
     })
   },
   getMsg(query, callback) {
@@ -82,8 +54,7 @@ const chatCtrl = {
         console.error(err)
         res.status(418).send(err)
         next()
-      } else{
-        console.log('found:', messages)
+      } else {
         res.json(messages)
         next()
       }
