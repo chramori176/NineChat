@@ -7,8 +7,8 @@ module.exports = {
     contentBase: './'
   },
   entry: [
-    './client/index.js',
-    './client/styles.css',
+    './public/client/index.js',
+    './public/client/styles.css',
   ],
 
   output: {

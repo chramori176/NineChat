@@ -13,7 +13,7 @@ module.exports = function(app) {
     });
   }
 
-  wss.on('connection', function connection(ws, req) {
+  wss.on('connection', (ws, req) => {
     let id = Object.keys(connectList).length;
     let username = req.headers.username ? req.headers.username : "Garret";
     connectList[id] = {id: id, ws: ws, username: username};
@@ -22,10 +22,12 @@ module.exports = function(app) {
       ws.send(JSON.stringify(messages))
     });
 
-    ws.on('message', function incoming(data) {
-      chatCtrl.addMsg(data, (err, savedMsg) => {
-        sendToAll(JSON.stringify(savedMsg));
-      });
+    ws.on('message', (data) => {
+      chatCtrl.addMsg(data)
+        .then(savedMsg => {
+          sendToAll(JSON.stringify(savedMsg));
+        })
+        .catch(err => console.log(err));
     });
 
     ws.on('close', () => {

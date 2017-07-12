@@ -6,9 +6,9 @@ mongoose.connection.once('open', () => {
 });
 
 let messagesSchema = mongoose.Schema({
-    src: String,
-    dst: String,
-    message: String,
+    src: {type: String, required: true},
+    dst: {type: String, required: true},
+    content: {type: String, required: true},
     timestamp: { type: Date, default: Date.now }
 });
 

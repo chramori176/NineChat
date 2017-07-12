@@ -6,7 +6,7 @@ function Chatbox(props) {
       return (
         <div key={message._id} className="msgcontainer">
           <div className="msgname">{message.src}:</div>
-          <div className="msg">{message.message}</div>
+          <div className="msg">{message.content}</div>
         </div>
       )
     });

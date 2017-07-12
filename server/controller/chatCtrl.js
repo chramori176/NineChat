@@ -1,42 +1,19 @@
 const Message = require('../model/message');
-// const messageSchema = require('../model/message');
 const User = require('../model/users');
-const bodyParser = require('body-parser')
-let msgDoc; 
-let msg; 
 
 const chatCtrl = {
 
   addMsg(data, callback) {
-    try {
-      msg = JSON.parse(data)
-      if ('src' in msg &&
-          'dst' in msg &&
-          'content' in msg){
-        msgDoc = new Message({
-          src: msg.src,
-          dst: msg.dst,
-          message: msg.content
-        })
-      } else {throw "msg data lacks key"}
-    } catch (err) {
-      msgDoc = new Message({
-        src: "Garret",
-        dst: "message_not_json",
-        message: data
-      })
-      console.log('error ', err)
-    }
-    msgDoc.save((err, savedMsg)=>{
-      if (err) return console.error(err)
-      callback(err, savedMsg)
-    })
+    return new Promise((resolve, reject) => {
+      const message = new Message(JSON.parse(data));
+      console.log('message is', message);
+      message.save((err, savedMessage) => {
+        if (err) reject(err);
+        resolve(savedMessage);
+      });
+    });
   },
-  getMsg(query, callback) {
-    Message.find({}, (err, result)=>{
-      return callback(err, result)
-    })
-  },
+
   getLastTen(userid, callback){
     Message.
       find({}).
@@ -47,18 +24,22 @@ const chatCtrl = {
         return callback(err, result)
     })
   },
+
+  //   get(req, res, next) {
+  //   return new Promise((resolve, reject) => {
+  //     Message.find({}, (err, messages) => {
+  //       if (err) res.status(418).send(err);
+  //       res.json(messages);
+  //       next();
+  //     });
+  //   });
+  // },
+
   get(req, res, next){
-    let query = {}
-    chatCtrl.getMsg(query, (err, messages)=>{
-      if (err) {
-        console.error(err)
-        res.status(418).send(err)
-        next()
-      } else {
-        res.json(messages)
-        next()
-      }
-    })
+    Message.find({}, (err, messages) => {
+      if (err) res.status(418).send(err);
+      res.json(messages);
+    });
   }
 };
 
