@@ -1,0 +1,110 @@
+body {
+  background-color: #0C0F0A;
+  color: #FF206E;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 20px;
+}
+
+main {
+  margin-top: 150px;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+h1 span {
+  color: #41EAD4;
+  font-size: 70%;
+  position: absolute;
+}
+
+h2 span {
+  /* border-bottom: 3px solid #41EAD4; */
+  color: #41EAD4;
+  border-radius: 3px;
+}
+
+
+
+form {
+  text-align: center;
+  display: block;
+}
+
+input {
+  background-color: #fff;
+  margin: 10px auto;
+  height: 24px;
+  width: 300px;
+  display: block;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  border: 1px solid #FF206E;
+}
+
+#login-button {
+  width: 110px;
+  height: 35px;
+  background-color: #fff;
+  border: 2px solid #FF206E;
+  border-radius: 10px;
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#login-button:hover {
+  cursor: pointer;
+  border: 2px solid #41EAD4;
+}
+
+#signup-link {
+  display: inline;
+  margin-top: 5px;
+  cursor: pointer;
+  text-decoration: underline;
+  color: #41EAD4;
+}
+
+#signup-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /* background-color: rgb(0, 0, 0); */
+  background-color: rgba(183, 183, 183, 0.4);
+}
+
+.modal-content {
+    background-color: #fdfdfd;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border: 2px solid #41EAD4;
+    border-radius: 20px;
+}
+
+#signup-submit-button {
+}
+
+
+/* The Close Button */
+#close-button {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#close-button:hover,
+#close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

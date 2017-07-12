@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>NineChat++</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='stylesheet' type='text/css' href='./loginStyles.css' />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+</head>
+
+<body>
+  <main>
+    <h1>NineChat<span>++</span></h1>
+    <h2>Better, Faster, Sexier. <span>NineChat on Steroids</span></h2>
+    <div id='login'>
+      <form id='login-form'>
+        <input id='login-username' class='username' type='username' placeholder='username...' />
+        <input id='login-password' class='password' type='password' placeholder='password....' />
+        <button id='login-button' type='submit'>Submit</button>
+        <p>No account? <span id='signup-link'>Sign Up!</span></p>
+      </form>
+    </div>
+    <section>
+      <div id='signup-modal'>
+        <div class='modal-content'>
+          <span id='close-button'>&times;</span>
+          <form id='signup-form'>
+            <input id='signup-username' class='username' type='username' placeholder='username...' />
+            <input id='signup-password' class='password' type='password' placeholder='password....' />
+            <button id='signup-submit-button' type='submit'>Submit</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src='./login.js'></script>
+</body>
+
+</html>
