@@ -1,18 +1,19 @@
 //import things here
 import React, { Component } from 'react';
-import Chatbox from './chatbox';
+import Chatbox from './Chatbox';
 import Topbar from './topbar';
 import Bottombar from './bottombar';
 import Userlist from './user-list.jsx';
 import UserProfile from './user-profile.jsx';
 
-const socket = new WebSocket('ws://192.168.0.71:3001/');
+const socket = new WebSocket('ws://192.168.0.81:3001/');
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = this.getInitialState();
     this.sendClick = this.sendClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -40,8 +41,8 @@ class App extends Component {
     return {
       messages: [],
       friendsList: [
-        { username: 'JanelleCS', name: 'Janelle', photo: 'test' },
-        { username: 'JeffreyCS', name: 'Heffe', photo: 'test.jpg' }
+        { username: 'JanelleCS', name: 'Janelle', photo: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAd8AAAAJGMxYmMyNTQzLTQ5OTgtNGVlNC05OGMzLWI0OTk5YzZlNGQ0MA.jpg' },
+        { username: 'JeffreyCS', name: 'Heffe', photo: 'https://scontent.xx.fbcdn.net/v/t1.0-9/11219607_690638340976_327480042333658050_n.jpg?oh=c054527c60804bfd5c4c4fb1968953bd&oe=59C73688' }
       ],
       currentChat: { username: '', name: '', photo: '' },
       text: '',
@@ -95,7 +96,7 @@ class App extends Component {
           <Topbar />
           <Chatbox messages={this.state.messages} />
 
-          <Bottombar handleChange={(event) => this.handleChange(event)}
+          <Bottombar handleChange={this.handleChange}
             sendClick={this.sendClick}
             handleKeyPress={this.handleKeyPress} value={this.state.text}
           />
