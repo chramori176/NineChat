@@ -46,7 +46,7 @@ class App extends Component {
       ],
       currentChat: { username: '', name: '', photo: '' },
       text: '',
-      me: { username: 'GarrettCS', name: 'Garrett', photo: 'test.jpg' }
+      me: { username: parseUsername(document.cookie) }
     };
 
   }
@@ -84,34 +84,40 @@ class App extends Component {
   }
 
   render() {
-    const list = this.state.friendsList.map((friend, i) => (
-      <Userlist key={i} userClick={() => this.userClick(i)} user={i}
-        username={friend.username} name={friend.name} photo={friend.photo}
+    const list = this.state.friendsList.map((friend, i) => ( <
+      Userlist key = { i } userClick = {
+        () => this.userClick(i) } user = { i } username = { friend.username } name = { friend.name } photo = { friend.photo }
       />
     ));
 
-    return (
-      <div id="main">
-        <div id="chat">
-          <Topbar />
-          <Chatbox messages={this.state.messages} />
+    return ( <
+      div id = "main" >
+      <
+      div id = "chat" >
+      <
+      Topbar / >
+      <
+      Chatbox messages = { this.state.messages }
+      />
 
-          <Bottombar handleChange={this.handleChange}
-            sendClick={this.sendClick}
-            handleKeyPress={this.handleKeyPress} value={this.state.text}
-          />
+      <
+      Bottombar handleChange = { this.handleChange } sendClick = { this.sendClick } handleKeyPress = { this.handleKeyPress } value = { this.state.text }
+      />
 
-        </div>
-        <div id="users">
-          <UserProfile currentChat={this.state.currentChat} username={parseUsername(document.cookie)} />
-          <h3>Friends</h3>
-          <div className='user-list'>
-            <ul>
-              {list}
-            </ul>
-          </div>
-        </div>
-      </div>
+      <
+      /div> <
+      div id = "users" >
+      <
+      UserProfile currentChat = { this.state.currentChat } username = { parseUsername(document.cookie) }
+      /> <
+      h3 > Friends < /h3> <
+      div className = 'user-list' >
+      <
+      ul > { list } <
+      /ul> <
+      /div> <
+      /div> <
+      /div>
     );
   }
 }
